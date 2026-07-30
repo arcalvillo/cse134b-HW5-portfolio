@@ -1,3 +1,10 @@
+# Eleventy build output
+_site/
+
+# OS files
+.DS_Store
+Thumbs.db
+
 # Logs
 logs
 *.log
