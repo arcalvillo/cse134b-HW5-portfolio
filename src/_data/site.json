@@ -12,7 +12,6 @@
     { "text": "Projects", "url": "/projects/" },
     { "text": "Coursework", "url": "/coursework/" },
     { "text": "Contact", "url": "/contact/" },
-    { "text": "Experiments", "url": "/experiments/" },
     { "text": "Resume", "url": "/resume/" }
   ],
   "social": [
