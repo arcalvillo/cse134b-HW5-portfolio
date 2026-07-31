@@ -1,0 +1,15 @@
+{
+  "name": "cse134b-hw5",
+  "version": "1.0.0",
+  "description": "Portfolio site for CSE 134B HW5 - progressive enhancement, a web component, and an Eleventy build.",
+  "type": "module",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

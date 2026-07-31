@@ -1,0 +1,21 @@
+---
+layout: base.njk
+title: Coursework
+description: Notable coursework across CS courses at UC San Diego.
+permalink: /coursework/
+---
+<h1>Coursework</h1>
+<p>
+  A selection of notable coursework from my CS courses at UC San Diego.
+  Each course page contains brief write-ups of assignments and links to code on GitHub.
+</p>
+
+<ul class="card-list">
+  {% for course in courses %}
+    <li class="card">
+      <h2><a href="/coursework/{{ course.slug }}/">{{ course.code }} — {{ course.name }}</a></h2>
+      <p class="lede">{{ course.area }}</p>
+      <p>{{ course.summary }}</p>
+    </li>
+  {% endfor %}
+</ul>

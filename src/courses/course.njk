@@ -1,0 +1,29 @@
+---
+layout: base.njk
+pagination:
+  data: courses
+  size: 1
+  alias: course
+permalink: "/coursework/{{ course.slug }}/"
+eleventyComputed:
+  title: "{{ course.code }}"
+  description: "Notable assignments from {{ course.code }} {{ course.name }} at UC San Diego."
+---
+<h1>{{ course.code }} — {{ course.name }}</h1>
+
+<p class="lede">{{ course.subtitle }} · UC San Diego. {{ course.summary }}</p>
+
+<section>
+  <h2>Notable assignments</h2>
+
+  {% for item in course.assignments %}
+    <article class="card">
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.description }}</p>
+      <p><strong>Focused on:</strong> {{ item.focus }}</p>
+      <p><a href="{{ item.repo }}">View on GitHub</a></p>
+    </article>
+  {% endfor %}
+</section>
+
+<p><a href="/coursework/">Back to coursework</a></p>

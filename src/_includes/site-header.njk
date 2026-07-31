@@ -1,0 +1,37 @@
+<header class="site-header">
+  <div class="site-header__bar">
+    <p class="site-header__name"><a href="/">{{ site.title }}</a></p>
+    <p class="site-header__tagline">{{ site.tagline }}</p>
+  </div>
+
+  <nav aria-label="Main">
+    <ul class="nav-list">
+      {% for item in site.nav %}
+        <li>
+          <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.text }}</a>
+        </li>
+      {% endfor %}
+      <li>
+        <a href="/resume.pdf" download>Resume PDF</a>
+      </li>
+    </ul>
+  </nav>
+  <fieldset id="theme-picker" class="theme-picker" hidden>
+    <legend>Theme</legend>
+    <div class="theme-picker__options">
+      <span>
+        <input type="radio" id="theme-light" name="theme" value="light">
+        <label for="theme-light">Light</label>
+      </span>
+      <span>
+        <input type="radio" id="theme-dark" name="theme" value="dark">
+        <label for="theme-dark">Dark</label>
+      </span>
+      <span>
+        <input type="radio" id="theme-system" name="theme" value="system" checked>
+        <label for="theme-system">System</label>
+      </span>
+    </div>
+  </fieldset>
+  
+</header>

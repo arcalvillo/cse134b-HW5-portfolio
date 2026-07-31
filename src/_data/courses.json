@@ -1,0 +1,86 @@
+[
+  {
+    "slug": "cse134b",
+    "code": "CSE 134B",
+    "name": "Web Client Languages",
+    "area": "Web Development",
+    "subtitle": "Advanced Web Development",
+    "summary": "Focused on HTML5 semantic markup, modern CSS techniques, and client-side JavaScript for progressive enhancement.",
+    "assignments": [
+      {
+        "title": "HW1 — Introduction & Tooling",
+        "description": "First-week setup and a simple hosted intro page.",
+        "focus": "Git, GitHub, and Netlify deployment workflow.",
+        "repo": "https://github.com/arcalvillo/cse134b-hw1"
+      },
+      {
+        "title": "HW2 — Semantic HTML & UCD",
+        "description": "Applied user-centered design thinking and built the first version of this portfolio in pure semantic HTML.",
+        "focus": "50+ HTML tags, custom elements, and proper document structure.",
+        "repo": "https://github.com/arcalvillo/cse134b-portfolio"
+      },
+      {
+        "title": "HW5 — JavaScript & a Static Site Generator",
+        "description": "Rebuilt this site as an Eleventy build with a progressive-enhancement theme picker and a custom element backed by a live API.",
+        "focus": "Progressive enhancement, web components, and a build-and-deploy pipeline.",
+        "repo": "https://github.com/arcalvillo/cse134b-hw5"
+      }
+    ]
+  },
+  {
+    "slug": "cse150b",
+    "code": "CSE 150B",
+    "name": "Introduction to Artificial Intelligence",
+    "area": "AI / ML / Deep Learning",
+    "subtitle": "Search and Reasoning",
+    "summary": "Covered foundational AI topics including state-space search, adversarial search, constraint satisfaction, and probabilistic reasoning.",
+    "assignments": [
+      {
+        "title": "HW1 — State Space Search",
+        "description": "Implemented BFS, DFS, and A* search on classic AI puzzle problems.",
+        "focus": "Heuristic design and comparing algorithm efficiency.",
+        "repo": "https://github.com/arcalvillo/cse150b-hw1"
+      },
+      {
+        "title": "HW2 — Adversarial Search",
+        "description": "Built a minimax agent with alpha-beta pruning for a two-player game.",
+        "focus": "Optimal play under time constraints.",
+        "repo": "https://github.com/arcalvillo/cse150b-hw2"
+      },
+      {
+        "title": "HW3 — Probabilistic Reasoning",
+        "description": "Built a Bayesian network and implemented inference algorithms.",
+        "focus": "Reasoning under uncertainty.",
+        "repo": "https://github.com/arcalvillo/cse150b-hw3"
+      }
+    ]
+  },
+  {
+    "slug": "cse151b",
+    "code": "CSE 151B",
+    "name": "Deep Learning",
+    "area": "AI / ML / Deep Learning",
+    "subtitle": "Deep Learning",
+    "summary": "Covered neural network fundamentals, backpropagation, convolutional networks, recurrent networks, and modern deep learning architectures.",
+    "assignments": [
+      {
+        "title": "HW1 — Neural Network Fundamentals",
+        "description": "Implemented a feedforward neural network from scratch, including forward propagation and backpropagation.",
+        "focus": "Understanding gradient descent and the mechanics of training.",
+        "repo": "https://github.com/arcalvillo/cse151b-hw1"
+      },
+      {
+        "title": "HW2 — Convolutional Neural Networks",
+        "description": "Built and trained a CNN for image classification on a benchmark dataset.",
+        "focus": "Architecture design choices and their effect on model performance.",
+        "repo": "https://github.com/arcalvillo/cse151b-hw2"
+      },
+      {
+        "title": "HW3 — Sequence Models",
+        "description": "Trained a recurrent neural network on sequential data, exploring vanishing gradients and modern alternatives.",
+        "focus": "Handling temporal dependencies and comparing RNN variants.",
+        "repo": "https://github.com/arcalvillo/cse151b-hw3"
+      }
+    ]
+  }
+]

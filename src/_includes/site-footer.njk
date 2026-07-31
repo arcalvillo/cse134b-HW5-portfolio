@@ -1,0 +1,9 @@
+<footer class="site-footer">
+  <p>&copy; {{ build.year }} {{ site.author }}</p>
+  <ul class="footer-links">
+    {% for item in site.social %}
+      <li><a href="{{ item.url }}">{{ item.text }}</a></li>
+    {% endfor %}
+    <li><a href="/contact/">Contact</a></li>
+  </ul>
+</footer>

@@ -1,0 +1,22 @@
+{
+  "title": "Arrissa Calvillo",
+  "tagline": "CSE Student · UC San Diego",
+  "author": "Arrissa Calvillo",
+  "description": "Personal portfolio of Arrissa Calvillo, a Computer Science student at UC San Diego.",
+  "url": "https://REPLACE-ME.netlify.app",
+  "email": "arrcalvillo@gmail.com",
+  "location": "San Diego, CA",
+  "nav": [
+    { "text": "Home", "url": "/" },
+    { "text": "About", "url": "/about/" },
+    { "text": "Projects", "url": "/projects/" },
+    { "text": "Coursework", "url": "/coursework/" },
+    { "text": "Contact", "url": "/contact/" },
+    { "text": "Experiments", "url": "/experiments/" },
+    { "text": "Resume", "url": "/resume/" }
+  ],
+  "social": [
+    { "text": "GitHub", "url": "https://github.com/arcalvillo" },
+    { "text": "LinkedIn", "url": "https://www.linkedin.com/in/arrcalvillo" }
+  ]
+}
