@@ -250,7 +250,7 @@ the deployed site is what I wrote for Parts 1 and 2.
 | `src/_includes/site-footer.njk` | Copyright line and links |
 
 `<footer>` appears in exactly one source file. Every page sets
-`layout: base.njk` in its front matter, and per-page `<title>` and
+`layout: layouts/base.njk` in its front matter, and per-page `<title>` and
 `<meta name="description">` come from front matter rather than repeated
 boilerplate.
 
