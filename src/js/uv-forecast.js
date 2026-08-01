@@ -178,7 +178,7 @@ class UvForecast extends HTMLElement {
 
     const p = document.createElement('p');
     p.className = 'uv-status';
-    p.textContent = message + ' Showing UV for ' + place.label + ' is not possible right now.';
+    p.textContent = message + ' UV data for ' + place.label + ' is unavailable right now.';
 
     const retry = document.createElement('button');
     retry.type = 'button';
