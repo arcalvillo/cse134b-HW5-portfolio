@@ -336,9 +336,10 @@ in a template does not produce one broken page, it stops the whole site from
 building. And I now depend on Eleventy, which is one more thing that has to keep
 working for my site to deploy.
 
+
 ### What I would not use an SSG for
 
-A static site is generated once, at build time, and every visitor gets the same
+A static site is generated once at build time and every visitor gets the same
 files until the next deploy. That is fine for a portfolio, where the content
 only changes when I change it. It would not work for anything where the page has
 to differ per visitor or per request — a site with user accounts, a dashboard
