@@ -37,3 +37,18 @@ permalink: /
     </p>
   </article>
 </section>
+
+<section>
+  <h2>UV index</h2>
+  <p>
+    San Diego gets a lot of sun and not much shade. This shows the UV index
+    for the hours ahead, pulled live from Open-Meteo.
+  </p>
+
+  <uv-forecast location="san diego" hours="8">
+    <p>UV forecast requires JavaScript. Check the current UV index at
+       <a href="https://www.weather.gov/">weather.gov</a>.</p>
+  </uv-forecast>
+</section>
+
+<script type="module" src="/js/uv-forecast.js"></script>
