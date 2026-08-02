@@ -1,17 +1,16 @@
 /*
- * Dark Academia aesthetic toggle, plus a reading-comfort control.
+ * Dark Academia aesthetic switch, plus a reading-comfort switch.
  *
- * Both work the same way the theme picker does: state is set as an
- * attribute on the root element and CSS does all the visual work.
- * Neither is required for the page to function — with JavaScript off,
- * the controls are never revealed and the site renders in its default
- * presentation.
+ * Both work the way the theme picker does: state is set as an attribute on
+ * the root element and CSS does all the visual work. Neither is required
+ * for the page to function — with JavaScript off the controls are never
+ * revealed and the site renders in its default presentation.
  */
 
 const root = document.documentElement;
 const controls = document.getElementById('aesthetic-controls');
-const aestheticButton = document.getElementById('aesthetic-toggle');
-const readingButton = document.getElementById('reading-toggle');
+const aestheticInput = document.getElementById('aesthetic-input');
+const readingInput = document.getElementById('reading-input');
 
 const AESTHETIC_KEY = 'aesthetic';
 const READING_KEY = 'reading';
@@ -33,32 +32,33 @@ function write(key, value) {
   }
 }
 
-/* Apply a state attribute and keep the button's pressed state in sync. */
-function apply(attribute, value, button) {
+/* Set or remove a state attribute on the root element. */
+function apply(attribute, value) {
   if (value) root.setAttribute(attribute, value);
   else root.removeAttribute(attribute);
-
-  button.setAttribute('aria-pressed', value ? 'true' : 'false');
 }
 
-if (controls && aestheticButton && readingButton) {
+if (controls && aestheticInput && readingInput) {
   const savedAesthetic = read(AESTHETIC_KEY) === 'academia' ? 'academia' : null;
   const savedReading = read(READING_KEY) === 'plain' ? 'plain' : null;
 
-  apply('data-aesthetic', savedAesthetic, aestheticButton);
-  apply('data-reading', savedReading, readingButton);
+  apply('data-aesthetic', savedAesthetic);
+  apply('data-reading', savedReading);
+
+  aestheticInput.checked = savedAesthetic !== null;
+  readingInput.checked = savedReading !== null;
 
   controls.hidden = false;
 
-  aestheticButton.addEventListener('click', () => {
-    const next = root.getAttribute('data-aesthetic') === 'academia' ? null : 'academia';
-    apply('data-aesthetic', next, aestheticButton);
+  aestheticInput.addEventListener('change', () => {
+    const next = aestheticInput.checked ? 'academia' : null;
+    apply('data-aesthetic', next);
     write(AESTHETIC_KEY, next);
   });
 
-  readingButton.addEventListener('click', () => {
-    const next = root.getAttribute('data-reading') === 'plain' ? null : 'plain';
-    apply('data-reading', next, readingButton);
+  readingInput.addEventListener('change', () => {
+    const next = readingInput.checked ? 'plain' : null;
+    apply('data-reading', next);
     write(READING_KEY, next);
   });
 }

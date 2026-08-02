@@ -205,28 +205,107 @@ main > section { margin-block-end: calc(var(--gap) * 2); }
   display: inline;
   margin: 0;
 }
-
+/* ============================================================
+   Header controls
+   Groups the theme picker and the aesthetic switches so the header
+   wraps as one unit rather than each control reflowing separately.
+   ============================================================ */
+.site-header__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem var(--gap);   /* row-gap column-gap */
+  align-items: center;
+}
 /* ============================================================
    Aesthetic controls (revealed by JavaScript)
+
+   Each switch is a real checkbox, visually hidden, with the track
+   and knob drawn as pseudo-elements on its label. Keyboard operation
+   and announced state come from the input, not from ARIA.
    ============================================================ */
 .aesthetic-controls {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 1rem;
   align-items: center;
 }
 
-.aesthetic-controls button {
-  padding: 0.35rem 0.75rem;
-  font-size: 0.85rem;
-  color: var(--text);
-  background: transparent;
-  border: 1px solid var(--border);
+.switch {
+  display: inline-flex;
+  align-items: center;
 }
 
-.aesthetic-controls button[aria-pressed="true"] {
-  color: var(--bg);
-  background: var(--text);
+/* Kept in the layout but inert until the aesthetic is active
+   so turning the aesthetic on does not reflow the header */
+.switch--reading {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+html[data-aesthetic="academia"] .switch--reading {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.switch__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.switch__label {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  font-size: 0.85rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Track */
+.switch__label::before {
+  content: "";
+  flex: none;
+  inline-size: 2.5rem;
+  block-size: 1.4rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  transition: background-color 180ms ease, border-color 180ms ease;
+}
+
+/* Knob */
+.switch__label::after {
+  content: "";
+  position: absolute;
+  inset-inline-start: 4px;
+  inset-block-start: 50%;
+  inline-size: 0.95rem;
+  block-size: 0.95rem;
+  border-radius: 50%;
+  background: var(--muted);
+  transform: translateY(-50%);
+  transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.switch__input:checked + .switch__label::before {
+  background: var(--link);
+  border-color: var(--link);
+}
+
+.switch__input:checked + .switch__label::after {
+  background: var(--bg);
+  transform: translateY(-50%) translateX(1.1rem);
+}
+
+.switch__input:focus-visible + .switch__label::before {
+  outline: 3px solid var(--link);
+  outline-offset: 3px;
 }
 
 /* ============================================================
@@ -572,6 +651,3 @@ html[data-aesthetic="academia"][data-reading="plain"] main > section:first-of-ty
   color: inherit;
 }
 
-/* The reading control is only meaningful while the aesthetic is active. */
-#reading-toggle { display: none; }
-html[data-aesthetic="academia"] #reading-toggle { display: inline-flex; }

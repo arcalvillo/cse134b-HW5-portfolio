@@ -26,33 +26,41 @@
       </li>
     </ul>
   </nav>
-  <fieldset id="theme-picker" class="theme-picker" hidden>
-    <legend>Theme</legend>
-    <div class="theme-picker__options">
-      <span>
-        <input type="radio" id="theme-light" name="theme" value="light">
-        <label for="theme-light">Light</label>
+
+  {# Presentation controls grouped together so the header wraps as one unit
+     instead of each control reflowing independently on narrow screens #}
+  <div class="site-header__controls">
+
+    <fieldset id="theme-picker" class="theme-picker" hidden>
+      <legend>Theme</legend>
+      <div class="theme-picker__options">
+        <span>
+          <input type="radio" id="theme-light" name="theme" value="light">
+          <label for="theme-light">Light</label>
+        </span>
+        <span>
+          <input type="radio" id="theme-dark" name="theme" value="dark">
+          <label for="theme-dark">Dark</label>
+        </span>
+        <span>
+          <input type="radio" id="theme-system" name="theme" value="system" checked>
+          <label for="theme-system">System</label>
+        </span>
+      </div>
+    </fieldset>
+
+    {#----------------For Dark Academia theme---------------------------#}
+    <div id="aesthetic-controls" class="aesthetic-controls" hidden>
+      <span class="switch">
+        <input type="checkbox" id="aesthetic-input" class="switch__input">
+        <label for="aesthetic-input" class="switch__label">Dark Academia</label>
       </span>
-      <span>
-        <input type="radio" id="theme-dark" name="theme" value="dark">
-        <label for="theme-dark">Dark</label>
-      </span>
-      <span>
-        <input type="radio" id="theme-system" name="theme" value="system" checked>
-        <label for="theme-system">System</label>
+
+      <span class="switch switch--reading">
+        <input type="checkbox" id="reading-input" class="switch__input">
+        <label for="reading-input" class="switch__label">Readable type</label>
       </span>
     </div>
-  </fieldset>
-{#----------------For Dark Academia theme---------------------------#}
-    <div id="aesthetic-controls" class="aesthetic-controls" hidden>
-    <button type="button" id="aesthetic-toggle" aria-pressed="false">
-      Dark Academia
-    </button>
 
-    <span class="switch" id="reading-toggle">
-      <input type="checkbox" id="reading-input" class="switch__input">
-      <label for="reading-input" class="switch__label">Plain font</label>
-    </span>
-  </div>
   </div>
 </header>
