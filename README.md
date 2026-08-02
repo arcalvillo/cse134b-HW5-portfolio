@@ -349,3 +349,50 @@ so baking it into the HTML at build time would mean serving stale numbers until
 I happened to push again. That is exactly why it is fetched in the browser
 instead: the parts of a page that are the same for everyone can be generated
 ahead of time, and the parts that are not have to be fetched live.
+
+## Extra credit — Pagefind site search
+
+A `/search/` page with full-text search across the site, using the Pagefind
+JavaScript API with a custom interface rather than the bundled UI.
+
+### Build integration
+
+Pagefind runs after Eleventy in the build script:
+
+```json
+"build": "eleventy && pagefind --site _site"
+```
+
+It reads the generated HTML in `_site/` — not the templates — so the index is
+rebuilt from the real output on every deployment. Nothing about the index is
+committed to the repository.
+
+### Scoping
+
+`<main>` carries `data-pagefind-body` and the shared header and footer carry
+`data-pagefind-ignore`. Without this, the navigation would appear on every page
+and every query matching a nav item would return the whole site. Because the
+header and footer are single shared includes, this took three attributes.
+
+### The interface
+
+`src/js/search.js` calls `pagefind.search(query)` and renders results by
+cloning a `<template>` and filling it with `textContent`, the same approach used
+in the UV component. The form uses a labeled `input type="search"`, results are
+announced through an `aria-live="polite"` status line, and a `<noscript>` block
+explains that search requires JavaScript and links to the sitemap as a
+browsable fallback.
+
+### What gets built and why it needs no server
+
+Pagefind reads the finished HTML and writes a static index into
+`_site/pagefind/` — an index of the words on each page, plus content fragments,
+plus a small WebAssembly search engine. On my site that covers 12 pages and 548
+indexed words, so the index is only a few hundred kilobytes.
+
+There is no search server because the searching happens in the visitor's
+browser. When a query runs, the browser fetches only the index chunks that
+could contain matches, rather than the whole index, and the WebAssembly engine
+resolves the query locally. All the expensive work — reading every page and
+building the word index — happened once at build time. Netlify only ever hands
+out static files, exactly as it does for the rest of the site.

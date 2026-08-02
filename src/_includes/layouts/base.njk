@@ -8,7 +8,7 @@
 
   {% include "site-header.njk" %}
 
-  <main id="main">
+  <main id="main" data-pagefind-body> {#added to use pagefind#}
     {{ content | safe }}
   </main>
 

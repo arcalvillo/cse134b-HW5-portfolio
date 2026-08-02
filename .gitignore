@@ -24,3 +24,6 @@ node_modules/
 .cache
 .npm
 .eslintcache
+
+# Pagefind index (generated at build time)
+_site/pagefind/
