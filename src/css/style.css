@@ -386,3 +386,44 @@ uv-forecast[state="error"] .uv-status { color: light-dark(#a4262c, #f1949a); }
 .icon-link:hover {
   background: var(--surface);
 }
+
+/* ============================================================
+   Photo strip — CSS-only horizontal gallery
+   ============================================================ */
+.photo-strip {
+  display: flex;
+  gap: var(--gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-block-end: 0.5rem;
+}
+
+.photo-strip figure {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  margin: 0;
+}
+
+.photo-strip img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.photo-strip figcaption {
+  margin-block-start: 0.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.photo-strip:focus-visible {
+  outline: 3px solid var(--link);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-strip { scroll-behavior: auto; }
+}
