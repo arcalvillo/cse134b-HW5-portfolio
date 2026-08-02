@@ -1,4 +1,4 @@
-<header class="site-header data-pagefind-ignore"> {#pagefind ignore header#}
+<header class="site-header" data-pagefind-ignore> {#pagefind ignore header#}
   <div class="site-header__bar">
     <p class="site-header__name"><a href="/">{{ site.title }}</a></p>
     <p class="site-header__tagline">{{ site.tagline }}</p>
@@ -43,5 +43,13 @@
       </span>
     </div>
   </fieldset>
-  
+{# For Dark Academia theme #}
+  <div id="aesthetic-controls" class="aesthetic-controls" hidden>
+    <button type="button" id="aesthetic-toggle" aria-pressed="false">
+      Dark Academia
+    </button>
+    <button type="button" id="reading-toggle" aria-pressed="false">
+      Plainer type
+    </button>
+  </div>
 </header>
