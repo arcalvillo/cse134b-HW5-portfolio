@@ -524,7 +524,7 @@ uv-forecast[state="error"] .uv-status { color: light-dark(rgb(164, 38, 44), rgb(
    consumes so every component adopts the aesthetic without
    needing its own rules
    ============================================================ */
-html[data-aesthetic="academia"] {
+html[data-aesthetic="academia"] { /*my spooky default fonts*/
   --font-body:    "Cormorant Garamond", Garamond, Georgia, serif;
   --font-display: "Libre Caslon Display", Georgia, serif;
 
@@ -636,5 +636,20 @@ html[data-aesthetic="academia"][data-reading="plain"] main > section:first-of-ty
   line-height: inherit;
   padding: 0;
   color: inherit;
+}
+/* Headings switch to the same face. Letter-spacing is reset because the
+   tracking that suits Caslon Display looks loose on a screen serif. */
+html[data-aesthetic="academia"][data-reading="plain"] h1,
+html[data-aesthetic="academia"][data-reading="plain"] h2,
+html[data-aesthetic="academia"][data-reading="plain"] h3 {
+  font-family: var(--font-body);
+  letter-spacing: 0;
+}
+
+/* Letter-spaced small caps are among the harder things on the page to
+   read, so navigation returns to normal casing in this mode. */
+html[data-aesthetic="academia"][data-reading="plain"] .nav-list a {
+  font-variant: normal;
+  letter-spacing: 0;
 }
 
