@@ -216,19 +216,6 @@ main > section { margin-block-end: calc(var(--gap) * 2); }
   gap: 0.75rem var(--gap);   /* row-gap column-gap */
   align-items: center;
 }
-/* ============================================================
-   Aesthetic controls (revealed by JavaScript)
-
-   Each switch is a real checkbox, visually hidden, with the track
-   and knob drawn as pseudo-elements on its label. Keyboard operation
-   and announced state come from the input, not from ARIA.
-   ============================================================ */
-.aesthetic-controls {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  align-items: center;
-}
 
 .switch {
   display: inline-flex;
@@ -256,7 +243,7 @@ html[data-aesthetic="academia"] .switch--reading {
   clip-path: inset(50%);
 }
 
-.switch__label {
+.switch .switch__label {
   position: relative;
   display: inline-flex;
   align-items: center;

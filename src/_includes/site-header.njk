@@ -48,19 +48,20 @@
         </span>
       </div>
     </fieldset>
-
+    
     {#----------------For Dark Academia theme---------------------------#}
-    <div id="aesthetic-controls" class="aesthetic-controls" hidden>
-      <span class="switch">
-        <input type="checkbox" id="aesthetic-input" class="switch__input">
-        <label for="aesthetic-input" class="switch__label">Dark Academia</label>
-      </span>
+    <fieldset id="aesthetic-controls" class="theme-picker" hidden>
+      <legend>Aesthetic</legend>
+      <div class="theme-picker__options">
+        <span class="switch">
+          <input type="checkbox" id="aesthetic-input" class="switch__input">
+          <label for="aesthetic-input" class="switch__label">Dark Academia</label>
+        </span>
 
-      <span class="switch switch--reading">
-        <input type="checkbox" id="reading-input" class="switch__input">
-        <label for="reading-input" class="switch__label">Readable type</label>
-      </span>
-    </div>
-
-  </div>
+        <span class="switch switch--reading">
+          <input type="checkbox" id="reading-input" class="switch__input">
+          <label for="reading-input" class="switch__label">Readable type</label>
+        </span>
+      </div>
+    </fieldset>
 </header>
