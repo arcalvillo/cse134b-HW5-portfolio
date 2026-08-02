@@ -43,13 +43,16 @@
       </span>
     </div>
   </fieldset>
-{# For Dark Academia theme #}
-  <div id="aesthetic-controls" class="aesthetic-controls" hidden>
+{#----------------For Dark Academia theme---------------------------#}
+    <div id="aesthetic-controls" class="aesthetic-controls" hidden>
     <button type="button" id="aesthetic-toggle" aria-pressed="false">
       Dark Academia
     </button>
-    <button type="button" id="reading-toggle" aria-pressed="false">
-      Plainer type
-    </button>
+
+    <span class="switch" id="reading-toggle">
+      <input type="checkbox" id="reading-input" class="switch__input">
+      <label for="reading-input" class="switch__label">Readable type</label>
+    </span>
+  </div>
   </div>
 </header>
