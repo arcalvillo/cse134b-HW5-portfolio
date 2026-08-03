@@ -17,7 +17,7 @@ npm run build   # production build into _site/
 
 Requires Node 20 or newer. `npm start` is an alias for `npm run dev`.
 
-The build outputs to `_site/`, which is ignored by git — Netlify runs the build
+The build outputs to `_site/`, which is ignored by git, since Netlify runs the build
 itself on every push rather than receiving uploaded output.
 
 ---
@@ -65,7 +65,7 @@ html[data-theme="dark"]  { color-scheme: dark;  }
 
 Because every colour is a `light-dark()` pair, changing which scheme resolves
 repaints the whole site from one attribute. The JavaScript never writes inline
-styles onto individual elements — it sets one piece of state that the CSS
+styles onto individual elements: it sets one piece of state that the CSS
 already understands.
 
 ### The control
@@ -73,8 +73,8 @@ already understands.
 A `<fieldset>` with a `<legend>` containing three radios: Light, Dark, and
 System. Radios were the right choice because the three states are mutually
 exclusive, and the platform then supplies keyboard operation (arrow keys),
-the announced selected state, and group labelling from the `<legend>` — no
-ARIA attributes needed. Each radio has a `<label for>` matching its `id`.
+the announced selected state, and group labelling from the `<legend>`, so no
+ARIA attributes are needed. Each radio has a `<label for>` matching its `id`.
 
 ### Persistence
 
@@ -83,7 +83,7 @@ survives reloads and carries across pages. Selecting "System" removes the key
 rather than storing a third value, since the absence of an override is exactly
 what "follow the system" means.
 
-Every storage call is wrapped in `try/catch`. `localStorage` can throw — Safari
+Every storage call is wrapped in `try/catch`. `localStorage` can throw: Safari
 private browsing throws on write, and some configurations throw on read when
 cookies are blocked. A failed read falls back to "system", and a failed write
 means the theme applies for the current page but is not remembered. Neither
@@ -103,7 +103,7 @@ the browser runs it before continuing to parse and paint:
 ```
 
 Render-blocking scripts are normally something to avoid. It is justified here
-because the file is four lines and one synchronous `localStorage` read, so the
+because the file is a handful of lines and a few synchronous `localStorage` reads, so the
 delay is negligible, and the alternative is a visible flash on every single page
 load. The two files are separate on purpose: only the tiny one needs to block,
 while the full interactive logic can wait until after parsing.
@@ -113,7 +113,7 @@ while the full interactive logic can wait until after parsing.
 The picker ships in the HTML with the `hidden` attribute. `js/theme.js` sets
 `picker.hidden = false` only at the end, after the saved preference has been
 read and applied. If the script is blocked, fails to load, or throws, the
-control is never revealed — so a visitor never sees a theme picker that does
+control is never revealed, so a visitor never sees a theme picker that does
 nothing.
 
 ### Code quality
@@ -187,7 +187,7 @@ unavailable or the script fails to load.
 | Error | A plain-language message and a working "Try again" button |
 
 Each state is reflected onto a `state` attribute on the element, so CSS can
-respond to it — for example, `uv-forecast[state="error"] .uv-status` colours the
+respond to it. For example, `uv-forecast[state="error"] .uv-status` colours the
 message red without the JavaScript needing to know anything about styling.
 
 ### Lifecycle and cancellation
@@ -211,7 +211,7 @@ into an HTML string.
 The reason matters: anything assigned to `innerHTML` is parsed as markup, not
 treated as text. If a value coming back from a third-party server were placed
 into an `innerHTML` string, a compromised or malicious response could include
-tags — an `<img>` with an `onerror` handler, for example — and the browser would
+tags (an `<img>` with an `onerror` handler, for example) and the browser would
 execute them as part of my page, with access to everything on it. `textContent`
 assigns the value as literal text, so a response containing markup renders as
 visible characters and can never execute. Since the response comes from a
@@ -237,16 +237,16 @@ The rendered output links back to Open-Meteo as the data source.
 
 Eleventy. It works directly with the HTML I already had, so converting the
 existing pages meant moving markup into templates rather than rewriting it, and
-it ships no JavaScript to the browser of its own — the only client-side code on
+it ships no JavaScript to the browser of its own, so the only client-side code on
 the deployed site is what I wrote for Parts 1 and 2.
 
 ### Templates and includes
 
 | File | Role |
 |---|---|
-| `src/_includes/base.njk` | The document shell — doctype, `<head>`, skip link, header, `<main>`, footer, script tags |
+| `src/_includes/layouts/base.njk` | The document shell: doctype, `<head>`, skip link, header, `<main>`, footer, script tags |
 | `src/_includes/head.njk` | Title, meta description, favicon, stylesheet, theme-init script |
-| `src/_includes/site-header.njk` | Site name, navigation, theme picker |
+| `src/_includes/site-header.njk` | Site name, navigation, presentation controls |
 | `src/_includes/site-footer.njk` | Copyright line and links |
 
 `<footer>` appears in exactly one source file. Every page sets
@@ -296,7 +296,7 @@ unmatched paths. `src/sitemap.njk` builds to `/sitemap.xml`, iterating over
 `netlify.toml` declares the build command (`npm run build`), the publish
 directory (`_site`), and the Node version, so the configuration is committed to
 the repository rather than typed into a dashboard. Netlify runs the build on
-every push to `main` — a push causes a deployment, and the deployed site is
+every push to `main`, so a push causes a deployment, and the deployed site is
 produced from source rather than uploaded.
 
 `package.json` provides working `dev`, `start`, and `build` scripts, so
@@ -315,7 +315,7 @@ Before the conversion I had ten HTML files, and every one of them started with
 the same forty lines: the same header, the same nav list, the same footer. If I
 wanted to change one link in the nav, I changed it ten times and hoped I did not
 miss one. When I removed the Experiments page as part of this assignment, it
-took two edits — delete the file, delete one line from a data file — where
+took two edits, deleting the file and deleting one line from a data file, where
 before it would have meant opening every page and deleting the same list item
 from each. The three course pages were the clearest case. They were nearly
 identical HTML with different text, and now they come from one template and one
@@ -342,7 +342,7 @@ working for my site to deploy.
 A static site is generated once at build time and every visitor gets the same
 files until the next deploy. That is fine for a portfolio, where the content
 only changes when I change it. It would not work for anything where the page has
-to differ per visitor or per request — a site with user accounts, a dashboard
+to differ per visitor or per request: a site with user accounts, a dashboard
 showing someone's own data, a feed that updates without a rebuild. My own UV
 component is the clearest example on this site. The UV index changes every hour,
 so baking it into the HTML at build time would mean serving stale numbers until
@@ -363,7 +363,7 @@ Pagefind runs after Eleventy in the build script:
 "build": "eleventy && pagefind --site _site"
 ```
 
-It reads the generated HTML in `_site/` — not the templates — so the index is
+It reads the generated HTML in `_site/`, not the templates, so the index is
 rebuilt from the real output on every deployment. Nothing about the index is
 committed to the repository.
 
@@ -386,13 +386,12 @@ browsable fallback.
 ### What gets built and why it needs no server
 
 Pagefind reads the finished HTML and writes a static index into
-`_site/pagefind/` — an index of the words on each page, plus content fragments,
-plus a small WebAssembly search engine. On my site that covers 12 pages and 548
-indexed words, so the index is only a few hundred kilobytes.
+`_site/pagefind/`: an index of the words on each page, plus content fragments,
+plus a small WebAssembly search engine. On my site that covers 13 pages, so the index is only a few hundred kilobytes.
 
 There is no search server because the searching happens in the visitor's
 browser. When a query runs, the browser fetches only the index chunks that
 could contain matches, rather than the whole index, and the WebAssembly engine
-resolves the query locally. All the expensive work — reading every page and
-building the word index — happened once at build time. Netlify only ever hands
+resolves the query locally. All the expensive work, reading every page and
+building the word index, happened once at build time. Netlify only ever hands
 out static files, exactly as it does for the rest of the site.
